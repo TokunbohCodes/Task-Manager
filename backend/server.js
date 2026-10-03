@@ -3,6 +3,8 @@ import express from "express"
 import cors from "cors";
 import { errorHandler } from "./src/utilis/errorHandler.js";
 import { connectDB } from "./src/lib/db.js";
+import morgan from "morgan";
+import helmet from "helmet"
 
 
 const app = express();
@@ -15,7 +17,8 @@ app.get("/", (req, res) => {
    res.send("Hello")
 });
 
-
+app.use(morgan("dev"));
+app.use(helmet())
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors({
