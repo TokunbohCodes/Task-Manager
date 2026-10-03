@@ -6,7 +6,7 @@ const TaskForm = () => {
         type="text"
         name=""
         id="title"
-        className="h-12 flex-1 outline-0 border border-gray-700 rounded-tl-lg rounded-bl-lg pl-6 text-lg capitalize"
+        className="w-0 h-12 flex-1 outline-0 border border-gray-700 rounded-tl-lg rounded-bl-lg pl-6 text-lg capitalize"
       />
       <button
         type="submit"
