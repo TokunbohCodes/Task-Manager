@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+@theme{
+  --font-sans: "Mulish", sans-serif;
+  --font-serif: "Fraunces", serif;
+  --background-image-primary: linear-gradient(135deg, #0C0B17, #0D0C19, #0E0D1C);
+  --shadow-cl: 0 4px 20px rgba(0, 0, 0, 0.1);
+  --text-fluid-lg: clamp(1rem, 2vw, 2rem);
+  --color-cl: #cc8800;
+  --border-cl: #c9a84c
+}
+body {
+ font-family: var(--font-sans);
+ color: #f0ece4;
+}
+
