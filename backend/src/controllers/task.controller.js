@@ -57,11 +57,10 @@ export const updateTaskToCompleted = async (req, res, next) => {
       if (task) {
          task.completed = !task.completed
       }
-      const taskCompleted = await task.save();
+      await task.save();
       return res.status(200).json({
          success: true,
          message: "Task Updated",
-         task: taskCompleted
       })
    } catch (error) {
       console.error(error.message);

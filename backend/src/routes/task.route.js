@@ -5,7 +5,7 @@ import { createTask, deleteTask, fetchTasks, updateTask, updateTaskToCompleted }
 const router = express.Router();
 
 router.post("/create", createTask);
-router.post("/complete-task/:id", updateTaskToCompleted);
+router.put("/complete-task/:id", updateTaskToCompleted);
 router.get("/get", fetchTasks);
 router.put("/update-task/:id", updateTask);
 router.delete("/delete/:id", deleteTask);

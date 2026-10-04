@@ -2,10 +2,19 @@ import { easeInOut, motion } from 'motion/react'
 import { LuLoader } from 'react-icons/lu'
 import Task from './Task'
 import TaskForm from './TaskForm'
-import { useTaskStore } from './store/taskStore'
+import { useTaskStore } from './store/taskStore';
+import { useEffect } from 'react';
 
 const TaskList = () => {
-   const {taskLoading} = useTaskStore()
+   const { taskLoading } = useTaskStore();
+   const fetchTasks = useTaskStore((state) => state.fetchTasks);
+   const tasks = useTaskStore((state) => state.tasks);
+
+   useEffect(() => {
+      fetchTasks()
+   }, [fetchTasks]);
+
+   console.log(tasks)
   return (
     <div className="max-w-2xl mx-auto px-12 pt-8 pb-16 rounded-2xl bg-primary overflow-hidden">
       <div className="mb-4">
@@ -35,12 +44,13 @@ const TaskList = () => {
           <LuLoader className="size-12 animate-spin text-cl" />
         </div>
       )}
-      {}
+        {!tasks && tasks.length < 1 ? (<p>Empty Task, Add Task Please</p>) : (
       <div className="mt-8 space-y-4 overflow-y-auto">
-        {Array.from({ length: 4 }).map((_, idx) => (
-          <Task key={idx} idx={idx} />
+        {tasks.map((task, idx) => (
+          <Task key={idx} idx={idx} task={task} />
         ))}
       </div>
+      )}
     </div>
   )
 }
