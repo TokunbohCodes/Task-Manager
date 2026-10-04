@@ -51,6 +51,16 @@ export const useTaskStore = create((set, get) => ({
         set({taskError: msg, taskLoading: false})
       }
 
+   },
+   updateTask: async (formData, taskID) => {
+      try {
+         await api.put(`/task/update-task/${taskID}`, formData)
+         set({ taskLoading: false, taskError: null })
+         get().fetchTasks();
+      } catch (error) {
+         const msg = error.response?.data?.message || "Something went wrong while deleting task"
+        set({taskError: msg, taskLoading: false})
+      }
    }
 
 
