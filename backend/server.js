@@ -1,12 +1,12 @@
-import './src/dotEnv.js'
-import express from 'express'
 import cors from 'cors'
-import morgan from 'morgan'
+import express from 'express'
 import helmet from 'helmet'
+import morgan from 'morgan'
+import './src/dotEnv.js'
 
-import { errorHandler } from './src/utils/errorHandler.js' // Fixed path typo
 import { connectDB } from './src/lib/db.js'
 import taskRoute from './src/routes/task.route.js'
+import { errorHandler } from './src/utils/errorHandler.js' // Fixed path typo
 
 const app = express()
 const PORT = process.env.PORT || 5001
@@ -16,8 +16,7 @@ app.use(helmet())
 app.use(morgan('dev'))
 app.use(
   cors({
-origin: 'http://localhost:5173', // Double check your Vite default port (5173 vs 5174)
-    credentials: true, // Fixed lowercase 'credentials'
+    origin: 'http://localhost:5173',
   }),
 )
 app.use(express.json())

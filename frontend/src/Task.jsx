@@ -3,7 +3,7 @@ import { MdDeleteForever, MdEditSquare } from 'react-icons/md'
 import {easeInOut, motion} from "motion/react"
 
 const Task = ({ idx }) => {
-  console.log(idx)
+
   return (
      <motion.div
         initial={{ opacity: 0, x: 30 }}
