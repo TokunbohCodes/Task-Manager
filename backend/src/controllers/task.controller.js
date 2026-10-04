@@ -46,6 +46,28 @@ export const updateTask = async (req, res, next) => {
       next(error)
    }
 };
+export const updateTaskToCompleted = async (req, res, next) => {
+   const { id } = req.params;
+   try {
+
+      const task = await Task.findById(id);
+      if (!task) {
+         next(errorWrapper(404, "Task not found"))
+      }
+      if (task) {
+         task.completed = !task.completed
+      }
+      const taskCompleted = await task.save();
+      return res.status(200).json({
+         success: true,
+         message: "Task Updated",
+         task: taskCompleted
+      })
+   } catch (error) {
+      console.error(error.message);
+      next(error)
+   }
+};
 export const deleteTask = async (req, res, next) => {
 
    const {id} = req.params
