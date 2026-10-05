@@ -106,8 +106,8 @@ const TaskList = () => {
         </motion.h1>
       </div>
 
-      <div className="top-1/2 -translate-y-1/2 h-40 w-40 absolute left-1/2 -translate-x-1/2 border-2 border-gray-400 rounded-full flex items-center justify-center bg-linear-[125deg,#0C0B17] opacity-10">
-        <h1 className="text-4xl font-extrabold">TaskList</h1>
+      <div className="top-1/2 -translate-y-1/2 h-60 w-60 absolute left-1/2 -translate-x-1/2 border-2 border-gray-400 rounded-full flex items-center justify-center bg-linear-[125deg,#0C0B17] opacity-10 overflow-hidden p-1 font-serif italic">
+        <h1 className="text-4xl font-extrabold">DEVMINT</h1>
       </div>
 
       <TaskForm
