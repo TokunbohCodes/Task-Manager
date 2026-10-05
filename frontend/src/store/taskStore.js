@@ -3,6 +3,7 @@ import api from "../utils/axios.js";
 
 export const useTaskStore = create((set, get) => ({
    tasks: [],
+   filteredTasks: [],
    taskLoading: false,
    taskError: null,
    clearError: () => set({ taskError: null }),
@@ -14,7 +15,7 @@ export const useTaskStore = create((set, get) => ({
          set({taskLoading: false, taskError: null })
          get().fetchTasks()
       } catch (error) {
-         const msg = error.response?.data?.message || "Something went wrong while fetching data"
+         const msg = error.response?.data?.message || "Something went wrong while creating task"
         set({taskError: msg, taskLoading: false})
       }
    },
@@ -24,7 +25,7 @@ export const useTaskStore = create((set, get) => ({
          const res = await api.get("/task/get")
          set({tasks: res.data.tasks, taskLoading: false, taskError: null})
       } catch (error) {
-         const msg = error.response?.data?.message || "Something went wrong while fetching data"
+         const msg = error.response?.data?.message || "Something went wrong while fetching tasks"
         set({taskError: msg, taskLoading: false})
       }
    },
@@ -47,21 +48,20 @@ export const useTaskStore = create((set, get) => ({
          set({ taskLoading: false, taskError: null })
          get().fetchTasks();
       } catch (error) {
-         const msg = error.response?.data?.message || "Something went wrong while deleting task"
+         const msg = error.response?.data?.message || "Something went wrong while updating completed task"
         set({taskError: msg, taskLoading: false})
       }
-
    },
+
    updateTask: async (formData, taskID) => {
       try {
          await api.put(`/task/update-task/${taskID}`, formData)
          set({ taskLoading: false, taskError: null })
          get().fetchTasks();
       } catch (error) {
-         const msg = error.response?.data?.message || "Something went wrong while deleting task"
+         const msg = error.response?.data?.message || "Something went wrong while updating task"
         set({taskError: msg, taskLoading: false})
       }
-   }
-
+   },
 
 }))

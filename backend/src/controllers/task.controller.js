@@ -46,6 +46,7 @@ export const updateTask = async (req, res, next) => {
       next(error)
    }
 };
+
 export const updateTaskToCompleted = async (req, res, next) => {
    const { id } = req.params;
    try {
@@ -67,6 +68,7 @@ export const updateTaskToCompleted = async (req, res, next) => {
       next(error)
    }
 };
+
 export const deleteTask = async (req, res, next) => {
 
    const {id} = req.params
